@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import unittest
 import vtk, qt, ctk, slicer
@@ -25,7 +27,8 @@ class UsSimulatorTraining(SimulatorGuideletLoadable):
 
 class UsSimulatorTrainingWidget(SimulatorGuideletWidget):
   def __init__(self, parent = None):
-    SimulatorGuideletWidget.__init__(self, parent)
+    SimulatorGuideletWidget.__init__(self, parent) 
+         # Creates the GuideletLogic 
 
   def setup(self):
     SimulatorGuideletWidget.setup(self)
@@ -33,8 +36,9 @@ class UsSimulatorTrainingWidget(SimulatorGuideletWidget):
   def addLauncherWidgets(self):
     SimulatorGuideletWidget.addLauncherWidgets(self)
 
+  # this is invoked in onLaunchGuideletButtonClicked (SimulatorGuideletLoable.py)
   def createGuideletInstance(self):
-    return UsSimulatorTrainingGuidelet(None, self.guideletLogic, self.selectedConfigurationName)
+    return UsSimulatorTrainingGuidelet(None, self.guideletLogic, self.selectedConfigurationName, self.selectedLanguage)
 
   def createGuideletLogic(self):
     return UsSimulatorTrainingLogic()
@@ -58,18 +62,20 @@ class UsSimulatorTrainingTest(SimulatorGuideletTest):
 
 class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
 
-  def __init__(self, parent, logic, configurationName='Default'):
-    SimulatorGuidelet.__init__(self, parent, logic, configurationName)
-
+  def __init__(self, parent, logic, configurationName='Default', SelectedLanguage='English'):
     logging.debug('UsSimulatorTrainingGuidelet.__init__')
+    SimulatorGuidelet.__init__(self, parent, logic, configurationName, SelectedLanguage)
+    
+    # Adds a default configurations to Slicer.ini
     self.logic.addValuesToDefaultConfiguration()
 
      # Set up main frame.
-
+     # Dock Widget = tool palettes or utility windows
     self.sliceletDockWidget.setObjectName('UsSimulatorTrainingPanel')
     self.sliceletDockWidget.setWindowTitle('UsSimulatorTraining')
     self.mainWindow.setWindowTitle('UsSimulatorTraining')
 
+ 
   def __del__(self):#common
     self.cleanup()
 
@@ -86,10 +92,7 @@ class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
     self.SetupLoadSceneCollapsibleButton()
 
     featurePanelList = SimulatorGuidelet.createFeaturePanels(self)
-
-
     featurePanelList[len(featurePanelList):] = [self.LoadSceneCollapsibleButton]
-
 
     return featurePanelList
 
@@ -107,15 +110,16 @@ class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
     logging.debug('SetupLoadSceneCollapsibleButton')
 
     self.LoadSceneCollapsibleButton.setProperty('collapsedHeight', 20)
-    self.LoadSceneCollapsibleButton.text = 'Scene'
+    self.LoadSceneCollapsibleButton.text = unicode(self.tr('Scene'), "utf8")
     self.sliceletPanelLayout.addWidget(self.LoadSceneCollapsibleButton)
 
     self.LoadSceneLayout = qt.QFormLayout(self.LoadSceneCollapsibleButton)
     self.LoadSceneLayout.setContentsMargins(12, 4, 4, 4)
     self.LoadSceneLayout.setSpacing(4)
-
-    self.LoadSceneButton = qt.QPushButton('Load Scene')
+  
+    self.LoadSceneButton = qt.QPushButton(unicode(self.tr('Load Scene'),"utf8"))
     self.LoadSceneLayout.addRow(self.LoadSceneButton)
+
 
   def openLoadSceneDialog(self):
     slicer.app.ioManager().openLoadSceneDialog()

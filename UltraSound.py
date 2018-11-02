@@ -24,11 +24,11 @@ class UltraSound(object):
       self.stopIcon = qt.QIcon(iconPathStop)
 
   def onConnectorNodeConnected(self):
-    self.freezeUltrasoundButton.setText('Freeze')
+    self.freezeUltrasoundButton.setText(unicode(self.guideletParent.tr('Freeze'), "utf8"))
     self.startStopRecordingButton.setEnabled(True)
 
   def onConnectorNodeDisconnected(self):
-    self.freezeUltrasoundButton.setText('Un-freeze')
+    self.freezeUltrasoundButton.setText(unicode(self.guideletParent.tr('Un-freeze'), "utf8"))
     if self.guideletParent.parameterNode.GetParameter('RecordingEnabledWhenConnectorNodeDisconnected') == 'False':
       self.startStopRecordingButton.setEnabled(False)
 
@@ -37,7 +37,7 @@ class UltraSound(object):
     collapsibleButton = ctk.ctkCollapsibleButton()
 
     collapsibleButton.setProperty('collapsedHeight', 20)
-    collapsibleButton.text = "Ultrasound"
+    collapsibleButton.text = unicode(self.guideletParent.tr("Ultrasound"), "utf8")
     parentWidget.addWidget(collapsibleButton)
 
     procedureLayout = qt.QVBoxLayout(collapsibleButton)
@@ -48,12 +48,12 @@ class UltraSound(object):
     ultrasoundLayout.setContentsMargins(12,4,4,4)
     ultrasoundLayout.setSpacing(4)
 
-    self.startStopRecordingButton = qt.QPushButton("Start Recording")
+    self.startStopRecordingButton = qt.QPushButton(unicode(self.guideletParent.tr("Start Recording"), "utf8"))
     self.startStopRecordingButton.setCheckable(True)
     self.startStopRecordingButton.setIcon(self.recordIcon)
     self.startStopRecordingButton.setToolTip("If clicked, start recording")
 
-    self.freezeUltrasoundButton = qt.QPushButton('Freeze')
+    self.freezeUltrasoundButton = qt.QPushButton(unicode(self.guideletParent.tr('Freeze'), "utf8"))
 
     hbox = qt.QHBoxLayout()
     hbox.addWidget(self.startStopRecordingButton)
@@ -63,7 +63,7 @@ class UltraSound(object):
     self.usFrozen=False
 
     self.brightnessSliderLabel = qt.QLabel()
-    self.brightnessSliderLabel.text = 'Brightness '
+    self.brightnessSliderLabel.text = 'Brightness'
 
     self.brightnessSliderWidget = ctk.ctkDoubleRangeSlider()
     self.brightnessSliderWidget.orientation = 'Horizontal'
@@ -74,15 +74,15 @@ class UltraSound(object):
     self.brightnessSliderWidget.maximumValue = 255
 
     self.brigthnessContrastButtonNormal = qt.QPushButton()
-    self.brigthnessContrastButtonNormal.text = "Normal"
+    self.brigthnessContrastButtonNormal.text = unicode(self.guideletParent.tr("Normal"), "utf8")
     self.brigthnessContrastButtonNormal.setEnabled(True)
 
     self.brigthnessContrastButtonBright = qt.QPushButton()
-    self.brigthnessContrastButtonBright.text = "Bright"
+    self.brigthnessContrastButtonBright.text = unicode(self.guideletParent.tr("Bright"), "utf8")
     self.brigthnessContrastButtonBright.setEnabled(True)
 
     self.brigthnessContrastButtonBrighter = qt.QPushButton()
-    self.brigthnessContrastButtonBrighter.text = "Brighter"
+    self.brigthnessContrastButtonBrighter.text = unicode(self.guideletParent.tr("Brighter"), "utf8")
     self.brigthnessContrastButtonBrighter.setEnabled(True)
 
     ultrasoundButtonsPresent = False

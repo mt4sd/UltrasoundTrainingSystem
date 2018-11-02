@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
+
 import os
 from __main__ import vtk, qt, ctk, slicer
 import logging
 import time
 
 from UltraSound import UltraSound
+from Translator import Translator
 
 class SimulatorGuidelet(object):
   @staticmethod
@@ -49,8 +52,12 @@ class SimulatorGuidelet(object):
   # VIEW_ULTRASOUND = unicode("Ultrasound")
   
 
-  def __init__(self, parent, logic, configurationName='Default', sliceletDockWidgetPosition = qt.Qt.LeftDockWidgetArea):
+  def __init__(self, parent, logic, configurationName='Default',SelectedLanguage='English', sliceletDockWidgetPosition = qt.Qt.LeftDockWidgetArea):
     logging.debug('SimulatorGuidelet.__init__')
+
+    self.Translator = Translator(SelectedLanguage)
+    self.tr = self.Translator.tr()
+
     self.sliceletDockWidgetPosition = sliceletDockWidgetPosition
     self.parent = parent
     self.logic = logic
@@ -86,6 +93,7 @@ class SimulatorGuidelet(object):
     self.setupConnections()
 
     self.sliceletDockWidget.setStyleSheet(self.loadStyleSheet())
+
 
   def showModulePanel(self, show):
     modulePanelDockWidget = slicer.util.mainWindow().findChildren('QDockWidget','PanelDockWidget')[0]
@@ -136,6 +144,8 @@ class SimulatorGuidelet(object):
     self.sliceletPanel = None
     self.mainWindow.removeDockWidget(self.sliceletDockWidget)
     self.sliceletDockWidget = None
+    self.Translator = None
+    self.tr = None
 
     self.ultrasound.cleanup()
     self.disconnect()
@@ -152,7 +162,7 @@ class SimulatorGuidelet(object):
     logging.debug('setupAdvancedPanel')
 
     self.advancedCollapsibleButton.setProperty('collapsedHeight', 20)
-    self.advancedCollapsibleButton.text = "Settings"
+    self.advancedCollapsibleButton.text = unicode(self.tr("Settings"), "utf8")
     self.sliceletPanelLayout.addWidget(self.advancedCollapsibleButton)
 
     self.advancedLayout = qt.QFormLayout(self.advancedCollapsibleButton)
@@ -162,7 +172,7 @@ class SimulatorGuidelet(object):
     # Layout selection combo box
     self.viewSelectorComboBox = qt.QComboBox(self.advancedCollapsibleButton)
     self.setupViewerLayouts()
-    self.advancedLayout.addRow("Layout: ", self.viewSelectorComboBox)
+    self.advancedLayout.addRow(unicode(self.tr("Layout: "), "utf8"), self.viewSelectorComboBox)
 
     self.registerCustomLayouts()
 
@@ -179,18 +189,18 @@ class SimulatorGuidelet(object):
     self.linkInputSelector.showChildNodeTypes = False
     self.linkInputSelector.setMRMLScene( slicer.mrmlScene )
     self.linkInputSelector.setToolTip( "Select connector node" )
-    self.advancedLayout.addRow("OpenIGTLink connector: ", self.linkInputSelector)
+    self.advancedLayout.addRow(self.tr("OpenIGTLink connector: "), self.linkInputSelector)
 
     self.showFullSlicerInterfaceButton = qt.QPushButton()
-    self.showFullSlicerInterfaceButton.setText("Show 3D Slicer user interface")
+    self.showFullSlicerInterfaceButton.setText(unicode(self.tr("Show 3D Slicer user interface"), "utf8"))
     self.advancedLayout.addRow(self.showFullSlicerInterfaceButton)
 
     self.showGuideletFullscreenButton = qt.QPushButton()
-    self.showGuideletFullscreenButton.setText("Show Guidelet in full screen")
+    self.showGuideletFullscreenButton.setText(unicode(self.tr("Show Guidelet in full screen"), "utf8"))
     self.advancedLayout.addRow(self.showGuideletFullscreenButton)
 
     self.saveSceneButton = qt.QPushButton()
-    self.saveSceneButton.setText("Save Guidelet scene")
+    self.saveSceneButton.setText(unicode(self.tr("Save Guidelet scene"), "utf8"))
     self.advancedLayout.addRow(self.saveSceneButton)
 
     self.saveDirectoryLineEdit = ctk.ctkPathLineEdit()
@@ -205,14 +215,14 @@ class SimulatorGuidelet(object):
     self.saveDirectoryLineEdit.setMaximumWidth(500)
 
     saveLabel = qt.QLabel()
-    saveLabel.setText("Save scene directory:")
+    saveLabel.setText(unicode(self.tr("Save scene directory:"), "utf8"))
     hbox = qt.QHBoxLayout()
     hbox.addWidget(saveLabel)
     hbox.addWidget(self.saveDirectoryLineEdit)
     self.advancedLayout.addRow(hbox)
 
     self.exitButton = qt.QPushButton()
-    self.exitButton.setText("Exit")
+    self.exitButton.setText(unicode(self.tr("Exit"), "utf8"))
     self.advancedLayout.addRow(self.exitButton)
 
   def setupViewerLayouts(self):

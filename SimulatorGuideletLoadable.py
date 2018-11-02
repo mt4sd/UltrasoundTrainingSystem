@@ -31,6 +31,7 @@ class SimulatorGuideletWidget(ScriptedLoadableModuleWidget):
     self.guideletInstance = None
     self.guideletLogic = self.createGuideletLogic()
     self.selectedConfigurationName = 'Default'
+    self.selectedLanguage = 'English'
 
   def setup(self):
     ScriptedLoadableModuleWidget.setup(self)
@@ -42,6 +43,22 @@ class SimulatorGuideletWidget(ScriptedLoadableModuleWidget):
     self.launcherFormLayout = qt.QFormLayout(launcherCollapsibleButton)
 
     self.addLauncherWidgets()
+
+    # Show language Default Language English
+    LanguagesComboBox = qt.QComboBox()
+    LanguagesComboBox.addItem("English")
+    LanguagesComboBox.addItem("Spanish")
+    LanguagesComboBox.addItem("French")
+    LanguagesComboBox.addItem("Arabic")
+
+    LanguagesLabel = qt.QLabel("Select language: ")
+    hBox = qt.QHBoxLayout()
+    hBox.addWidget(LanguagesLabel)
+    hBox.addWidget(LanguagesComboBox)
+    hBox.setStretch(1,2)
+    self.launcherFormLayout.addRow(hBox) 
+    LanguagesComboBox.connect('currentIndexChanged(const QString &)', self.onLanguagesComboBoxChanged)
+
 
     # Show guidelet button
     self.launchGuideletButton = qt.QPushButton("Start "+self.moduleName)
@@ -119,6 +136,11 @@ class SimulatorGuideletWidget(ScriptedLoadableModuleWidget):
     plusServerHostNamePort = settings.value(self.moduleName + '/Configurations/' + self.selectedConfigurationName + '/PlusServerHostNamePort')
     self.plusServerHostNamePortLineEdit.setText(plusServerHostNamePort)
 
+  def onLanguagesComboBoxChanged(self, SelectedLanguage):
+    logging.info("onLanguagesComboBoxChanged")
+    self.selectedLanguage = SelectedLanguage
+    print self.selectedLanguage
+    
   def cleanup(self):
     self.launchGuideletButton.disconnect('clicked()', self.onLaunchGuideletButtonClicked)
     if self.guideletLogic:
@@ -131,8 +153,8 @@ class SimulatorGuideletWidget(ScriptedLoadableModuleWidget):
 
     if not self.guideletInstance:
       self.guideletInstance = self.createGuideletInstance()
-    self.guideletInstance.setupScene()
-    self.guideletInstance.onSceneLoaded()
+    # self.guideletInstance.setupScene()
+    # self.guideletInstance.onSceneLoaded()
     self.guideletInstance.showFullScreen()
 
   def onPlusServerPreferencesChanged(self):
