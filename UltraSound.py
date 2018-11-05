@@ -24,11 +24,11 @@ class UltraSound(object):
       self.stopIcon = qt.QIcon(iconPathStop)
 
   def onConnectorNodeConnected(self):
-    self.freezeUltrasoundButton.setText(unicode(self.guideletParent.tr('Freeze'), "utf8"))
+    self.freezeUltrasoundButton.setText(self.guideletParent.tr('Freeze'))
     self.startStopRecordingButton.setEnabled(True)
 
   def onConnectorNodeDisconnected(self):
-    self.freezeUltrasoundButton.setText(unicode(self.guideletParent.tr('Un-freeze'), "utf8"))
+    self.freezeUltrasoundButton.setText(self.guideletParent.tr('Un-freeze'))
     if self.guideletParent.parameterNode.GetParameter('RecordingEnabledWhenConnectorNodeDisconnected') == 'False':
       self.startStopRecordingButton.setEnabled(False)
 
@@ -37,7 +37,7 @@ class UltraSound(object):
     collapsibleButton = ctk.ctkCollapsibleButton()
 
     collapsibleButton.setProperty('collapsedHeight', 20)
-    collapsibleButton.text = unicode(self.guideletParent.tr("Ultrasound"), "utf8")
+    collapsibleButton.text = self.guideletParent.tr("Ultrasound")
     parentWidget.addWidget(collapsibleButton)
 
     procedureLayout = qt.QVBoxLayout(collapsibleButton)
@@ -48,12 +48,12 @@ class UltraSound(object):
     ultrasoundLayout.setContentsMargins(12,4,4,4)
     ultrasoundLayout.setSpacing(4)
 
-    self.startStopRecordingButton = qt.QPushButton(unicode(self.guideletParent.tr("Start Recording"), "utf8"))
+    self.startStopRecordingButton = qt.QPushButton(self.guideletParent.tr("Start Recording"))
     self.startStopRecordingButton.setCheckable(True)
     self.startStopRecordingButton.setIcon(self.recordIcon)
     self.startStopRecordingButton.setToolTip("If clicked, start recording")
 
-    self.freezeUltrasoundButton = qt.QPushButton(unicode(self.guideletParent.tr('Freeze'), "utf8"))
+    self.freezeUltrasoundButton = qt.QPushButton(self.guideletParent.tr('Freeze'))
 
     hbox = qt.QHBoxLayout()
     hbox.addWidget(self.startStopRecordingButton)
@@ -74,15 +74,15 @@ class UltraSound(object):
     self.brightnessSliderWidget.maximumValue = 255
 
     self.brigthnessContrastButtonNormal = qt.QPushButton()
-    self.brigthnessContrastButtonNormal.text = unicode(self.guideletParent.tr("Normal"), "utf8")
+    self.brigthnessContrastButtonNormal.text = self.guideletParent.tr("Normal")
     self.brigthnessContrastButtonNormal.setEnabled(True)
 
     self.brigthnessContrastButtonBright = qt.QPushButton()
-    self.brigthnessContrastButtonBright.text = unicode(self.guideletParent.tr("Bright"), "utf8")
+    self.brigthnessContrastButtonBright.text = self.guideletParent.tr("Bright")
     self.brigthnessContrastButtonBright.setEnabled(True)
 
     self.brigthnessContrastButtonBrighter = qt.QPushButton()
-    self.brigthnessContrastButtonBrighter.text = unicode(self.guideletParent.tr("Brighter"), "utf8")
+    self.brigthnessContrastButtonBrighter.text = self.guideletParent.tr("Brighter")
     self.brigthnessContrastButtonBrighter.setEnabled(True)
 
     ultrasoundButtonsPresent = False

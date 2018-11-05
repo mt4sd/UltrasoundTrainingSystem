@@ -110,14 +110,14 @@ class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
     logging.debug('SetupLoadSceneCollapsibleButton')
 
     self.LoadSceneCollapsibleButton.setProperty('collapsedHeight', 20)
-    self.LoadSceneCollapsibleButton.text = unicode(self.tr('Scene'), "utf8")
+    self.LoadSceneCollapsibleButton.text = self.tr('Scene')
     self.sliceletPanelLayout.addWidget(self.LoadSceneCollapsibleButton)
 
     self.LoadSceneLayout = qt.QFormLayout(self.LoadSceneCollapsibleButton)
     self.LoadSceneLayout.setContentsMargins(12, 4, 4, 4)
     self.LoadSceneLayout.setSpacing(4)
   
-    self.LoadSceneButton = qt.QPushButton(unicode(self.tr('Load Scene'),"utf8"))
+    self.LoadSceneButton = qt.QPushButton(self.tr('Load Scene'))
     self.LoadSceneLayout.addRow(self.LoadSceneButton)
 
 

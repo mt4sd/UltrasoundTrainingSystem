@@ -20,8 +20,8 @@ class Translator:
         else:
             self.__tr = lambda t: t
     
-    def tr(self):
-        return self.__tr
+    def Translate(self, data):
+        return  unicode(self.__tr(data), "utf8")   
     
     def cleanup(self):
         self.__tr = None

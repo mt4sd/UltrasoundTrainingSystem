@@ -56,7 +56,6 @@ class SimulatorGuidelet(object):
     logging.debug('SimulatorGuidelet.__init__')
 
     self.Translator = Translator(SelectedLanguage)
-    self.tr = self.Translator.tr()
 
     self.sliceletDockWidgetPosition = sliceletDockWidgetPosition
     self.parent = parent
@@ -94,6 +93,8 @@ class SimulatorGuidelet(object):
 
     self.sliceletDockWidget.setStyleSheet(self.loadStyleSheet())
 
+  def tr(self, data):
+    return self.Translator.Translate(data)
 
   def showModulePanel(self, show):
     modulePanelDockWidget = slicer.util.mainWindow().findChildren('QDockWidget','PanelDockWidget')[0]
@@ -162,7 +163,7 @@ class SimulatorGuidelet(object):
     logging.debug('setupAdvancedPanel')
 
     self.advancedCollapsibleButton.setProperty('collapsedHeight', 20)
-    self.advancedCollapsibleButton.text = unicode(self.tr("Settings"), "utf8")
+    self.advancedCollapsibleButton.text = self.tr("Settings")
     self.sliceletPanelLayout.addWidget(self.advancedCollapsibleButton)
 
     self.advancedLayout = qt.QFormLayout(self.advancedCollapsibleButton)
@@ -172,7 +173,7 @@ class SimulatorGuidelet(object):
     # Layout selection combo box
     self.viewSelectorComboBox = qt.QComboBox(self.advancedCollapsibleButton)
     self.setupViewerLayouts()
-    self.advancedLayout.addRow(unicode(self.tr("Layout: "), "utf8"), self.viewSelectorComboBox)
+    self.advancedLayout.addRow(self.tr("Layout: "), self.viewSelectorComboBox)
 
     self.registerCustomLayouts()
 
@@ -192,15 +193,15 @@ class SimulatorGuidelet(object):
     self.advancedLayout.addRow(self.tr("OpenIGTLink connector: "), self.linkInputSelector)
 
     self.showFullSlicerInterfaceButton = qt.QPushButton()
-    self.showFullSlicerInterfaceButton.setText(unicode(self.tr("Show 3D Slicer user interface"), "utf8"))
+    self.showFullSlicerInterfaceButton.setText(self.tr("Show 3D Slicer user interface"))
     self.advancedLayout.addRow(self.showFullSlicerInterfaceButton)
 
     self.showGuideletFullscreenButton = qt.QPushButton()
-    self.showGuideletFullscreenButton.setText(unicode(self.tr("Show Guidelet in full screen"), "utf8"))
+    self.showGuideletFullscreenButton.setText(self.tr("Show Guidelet in full screen"))
     self.advancedLayout.addRow(self.showGuideletFullscreenButton)
 
     self.saveSceneButton = qt.QPushButton()
-    self.saveSceneButton.setText(unicode(self.tr("Save Guidelet scene"), "utf8"))
+    self.saveSceneButton.setText(self.tr("Save Guidelet scene"))
     self.advancedLayout.addRow(self.saveSceneButton)
 
     self.saveDirectoryLineEdit = ctk.ctkPathLineEdit()
@@ -215,14 +216,14 @@ class SimulatorGuidelet(object):
     self.saveDirectoryLineEdit.setMaximumWidth(500)
 
     saveLabel = qt.QLabel()
-    saveLabel.setText(unicode(self.tr("Save scene directory:"), "utf8"))
+    saveLabel.setText(self.tr("Save scene directory:"))
     hbox = qt.QHBoxLayout()
     hbox.addWidget(saveLabel)
     hbox.addWidget(self.saveDirectoryLineEdit)
     self.advancedLayout.addRow(hbox)
 
     self.exitButton = qt.QPushButton()
-    self.exitButton.setText(unicode(self.tr("Exit"), "utf8"))
+    self.exitButton.setText(self.tr("Exit"))
     self.advancedLayout.addRow(self.exitButton)
 
   def setupViewerLayouts(self):
