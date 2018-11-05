@@ -1,3 +1,3 @@
-from SimulatorGuideletLoadable import SimulatorGuideletLoadable, SimulatorGuideletLogic, SimulatorGuideletTest, SimulatorGuideletWidget
+from I18nGuideletLoadable import I18nGuideletLoadable, I18nGuideletLogic, I18nGuideletTest, I18nGuideletWidget
 from UsSimulatorTrainingLoadable import UsSimulatorTrainingLoadable,UsSimulatorTrainingLogic, UsSimulatorTrainingTest, UsSimulatorGuideletWidget
-from I18nGuideletLib import SimulatorGuidelet
+from I18nGuideletLib import I18nGuidelet

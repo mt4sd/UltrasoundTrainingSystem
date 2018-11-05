@@ -4,16 +4,16 @@ import os
 import unittest
 import vtk, qt, ctk, slicer
 import logging
-from SimulatorGuideletLoadable import SimulatorGuideletLoadable, SimulatorGuideletLogic, SimulatorGuideletTest, SimulatorGuideletWidget
-from I18nGuideletLib import SimulatorGuidelet
+from I18nGuideletLoadable import I18nGuideletLoadable, I18nGuideletLogic, I18nGuideletTest, I18nGuideletWidget
+from I18nGuideletLib import I18nGuidelet
 
 
-class UsSimulatorTraining(SimulatorGuideletLoadable):
+class UsSimulatorTraining(I18nGuideletLoadable):
   """Uses GuideletLoadable class, available at:
   """
 
   def __init__(self, parent):
-    SimulatorGuideletLoadable.__init__(self, parent)
+    I18nGuideletLoadable.__init__(self, parent)
     self.parent.title = "Us Simulation Navigation"
     self.parent.categories = ["USSimulator"]
     self.parent.dependencies = []
@@ -25,16 +25,16 @@ class UsSimulatorTraining(SimulatorGuideletLoadable):
     NAMIC
     """ # replace with organization, grant and thanks.
 
-class UsSimulatorTrainingWidget(SimulatorGuideletWidget):
+class UsSimulatorTrainingWidget(I18nGuideletWidget):
   def __init__(self, parent = None):
-    SimulatorGuideletWidget.__init__(self, parent) 
+    I18nGuideletWidget.__init__(self, parent) 
          # Creates the GuideletLogic 
 
   def setup(self):
-    SimulatorGuideletWidget.setup(self)
+    I18nGuideletWidget.setup(self)
 
   def addLauncherWidgets(self):
-    SimulatorGuideletWidget.addLauncherWidgets(self)
+    I18nGuideletWidget.addLauncherWidgets(self)
 
   # this is invoked in onLaunchGuideletButtonClicked (SimulatorGuideletLoable.py)
   def createGuideletInstance(self):
@@ -43,28 +43,27 @@ class UsSimulatorTrainingWidget(SimulatorGuideletWidget):
   def createGuideletLogic(self):
     return UsSimulatorTrainingLogic()
 
-class UsSimulatorTrainingLogic(SimulatorGuideletLogic):
+class UsSimulatorTrainingLogic(I18nGuideletLogic):
   """Uses GuideletLogic base class, available at:
   """ #TODO add path
 
   def __init__(self, parent = None):
-    SimulatorGuideletLogic.__init__(self, parent)
+    I18nGuideletLogic.__init__(self, parent)
 
-class UsSimulatorTrainingTest(SimulatorGuideletTest):
+class UsSimulatorTrainingTest(I18nGuideletTest):
   """This is the test case for your scripted module.
   """
 
   def runTest(self):
     """Run as few or as many tests as needed here.
     """
-    SimulatorGuideletTest.runTest(self)
+    I18nGuideletTest.runTest(self)
     
-
-class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
+class UsSimulatorTrainingGuidelet(I18nGuidelet):
 
   def __init__(self, parent, logic, configurationName='Default', SelectedLanguage='English'):
     logging.debug('UsSimulatorTrainingGuidelet.__init__')
-    SimulatorGuidelet.__init__(self, parent, logic, configurationName, SelectedLanguage)
+    I18nGuidelet.__init__(self, parent, logic, configurationName, SelectedLanguage)
     
     # Adds a default configurations to Slicer.ini
     self.logic.addValuesToDefaultConfiguration()
@@ -81,7 +80,7 @@ class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
 
   # Clean up when slicelet is closed
   def cleanup(self):#common
-    SimulatorGuidelet.cleanup(self)
+    I18nGuidelet.cleanup(self)
     logging.debug('cleanup')
 
   def createFeaturePanels(self):
@@ -91,20 +90,20 @@ class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
     self.LoadSceneCollapsibleButton = ctk.ctkCollapsibleButton()
     self.SetupLoadSceneCollapsibleButton()
 
-    featurePanelList = SimulatorGuidelet.createFeaturePanels(self)
+    featurePanelList = I18nGuidelet.createFeaturePanels(self)
     featurePanelList[len(featurePanelList):] = [self.LoadSceneCollapsibleButton]
 
     return featurePanelList
 
   def setupConnections(self):
     logging.debug('UsSimulatorTraining.setupConnections()')
-    SimulatorGuidelet.setupConnections(self)
+    I18nGuidelet.setupConnections(self)
 
     self.LoadSceneButton.connect('clicked()', self.openLoadSceneDialog)
 
   def disconnect(self):#TODO see connect
     logging.debug('UsSimulatorTraining.disconnect()')
-    SimulatorGuidelet.disconnect(self)
+    I18nGuidelet.disconnect(self)
   
   def SetupLoadSceneCollapsibleButton(self):
     logging.debug('SetupLoadSceneCollapsibleButton')

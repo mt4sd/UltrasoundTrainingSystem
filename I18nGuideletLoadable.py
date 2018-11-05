@@ -6,14 +6,14 @@ import logging
 #
 # GuideletLoadable
 #
-class SimulatorGuideletLoadable(ScriptedLoadableModule):
+class I18nGuideletLoadable(ScriptedLoadableModule):
   """Uses ScriptedLoadableModule base class, available at:
   https://github.com/Slicer/Slicer/blob/master/Base/Python/slicer/ScriptedLoadableModule.py
   """
 
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
-    self.parent.title = "SimulatorGuidelet"
+    self.parent.title = "I18nGuidelet"
     self.parent.categories = ["USSimulator"]
     self.parent.dependencies = []
     self.parent.contributors = [""]
@@ -21,7 +21,7 @@ class SimulatorGuideletLoadable(ScriptedLoadableModule):
 #
 # GuideletWidget
 #
-class SimulatorGuideletWidget(ScriptedLoadableModuleWidget):
+class I18nGuideletWidget(ScriptedLoadableModuleWidget):
   """Uses ScriptedLoadableModuleWidget base class, available at:
   https://github.com/Slicer/Slicer/blob/master/Base/Python/slicer/ScriptedLoadableModule.py
   """
@@ -168,7 +168,7 @@ class SimulatorGuideletWidget(ScriptedLoadableModuleWidget):
 #
 # GuideletLogic
 #
-class SimulatorGuideletLogic(ScriptedLoadableModuleLogic):
+class I18nGuideletLogic(ScriptedLoadableModuleLogic):
   """This class should implement all the actual
   computation done by your module.  The interface
   should be such that other python code can import
@@ -277,7 +277,7 @@ class SimulatorGuideletLogic(ScriptedLoadableModuleLogic):
 #
 # GuideletTest
 #
-class SimulatorGuideletTest(ScriptedLoadableModuleTest):
+class I18nGuideletTest(ScriptedLoadableModuleTest):
   """
   This is the test case for your scripted module.
   Uses ScriptedLoadableModuleTest base class, available at:

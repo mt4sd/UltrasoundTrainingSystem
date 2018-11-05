@@ -8,7 +8,7 @@ import time
 from UltraSound import UltraSound
 from Translator import Translator
 
-class SimulatorGuidelet(object):
+class I18nGuidelet(object):
   @staticmethod
   def showToolbars(show):
 
@@ -53,7 +53,7 @@ class SimulatorGuidelet(object):
   
 
   def __init__(self, parent, logic, configurationName='Default',SelectedLanguage='English', sliceletDockWidgetPosition = qt.Qt.LeftDockWidgetArea):
-    logging.debug('SimulatorGuidelet.__init__')
+    logging.debug('I18nGuidelet.__init__')
 
     self.Translator = Translator(SelectedLanguage)
 
@@ -304,7 +304,7 @@ class SimulatorGuidelet(object):
     mainwindow.close()
 
   def setupConnections(self):
-    logging.debug('SimulatorGuidelet.setupConnections()')
+    logging.debug('I18nGuidelet.setupConnections()')
     self.ultrasoundCollapsibleButton.connect('toggled(bool)', self.onUltrasoundPanelToggled)
     self.ultrasound.setupConnections()
     #advanced settings panel

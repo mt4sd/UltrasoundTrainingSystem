@@ -25,35 +25,35 @@ msgstr "Escenario"
 msgid "Load Scene"
 msgstr "Abrir Escenario"
 
-#: SimulatorGuidelet.py:163
+#: I18nGuidelet.py:163
 msgid "Settings"
 msgstr "Configuraciones"
 
-#: SimulatorGuidelet.py:173
+#: I18nGuidelet.py:173
 msgid "Layout: "
 msgstr "Maquetación: "
 
-#: SimulatorGuidelet.py:190
+#: I18nGuidelet.py:190
 msgid "OpenIGTLink connector: "
 msgstr "Conectador de OpenIGTLink:"
 
-#: SimulatorGuidelet.py:193
+#: I18nGuidelet.py:193
 msgid "Show 3D Slicer user interface"
 msgstr "Mostrar la interfaz 3D Slicer"
 
-#: SimulatorGuidelet.py:197
+#: I18nGuidelet.py:197
 msgid "Show Guidelet in full screen"
 msgstr "Mostrar Guidelet en pantalla completa"
 
-#: SimulatorGuidelet.py:201
+#: I18nGuidelet.py:201
 msgid "Save Guidelet scene"
 msgstr "Guardar Guidelet escena"
 
-#: SimulatorGuidelet.py:216
+#: I18nGuidelet.py:216
 msgid "Save scene directory:"
 msgstr "Directorio guardar escena:"
 
-#: SimulatorGuidelet.py:223
+#: I18nGuidelet.py:223
 msgid "Exit"
 msgstr "Salir"
 
