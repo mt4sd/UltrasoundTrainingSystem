@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-10-30 20:10-0000\n"
+"PO-Revision-Date: 2018-11-02 14:07+0000\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: UsSimulatorTraining.py:113
+msgid "Scene"
+msgstr "Escenario"
+
+#: UsSimulatorTraining.py:120
+msgid "Load Scene"
+msgstr "Abrir Escenario"
+
+#: SimulatorGuidelet.py:163
+msgid "Settings"
+msgstr "Configuraciones"
+
+#: SimulatorGuidelet.py:173
+msgid "Layout: "
+msgstr "Maquetación: "
+
+#: SimulatorGuidelet.py:190
+msgid "OpenIGTLink connector: "
+msgstr "Conectador de OpenIGTLink:"
+
+#: SimulatorGuidelet.py:193
+msgid "Show 3D Slicer user interface"
+msgstr "Mostrar la interfaz 3D Slicer"
+
+#: SimulatorGuidelet.py:197
+msgid "Show Guidelet in full screen"
+msgstr "Mostrar Guidelet en pantalla completa"
+
+#: SimulatorGuidelet.py:201
+msgid "Save Guidelet scene"
+msgstr "Guardar Guidelet escena"
+
+#: SimulatorGuidelet.py:216
+msgid "Save scene directory:"
+msgstr "Directorio guardar escena:"
+
+#: SimulatorGuidelet.py:223
+msgid "Exit"
+msgstr "Salir"
+
+#: UltraSound.py:40
+msgid "Ultrasound"
+msgstr "Ecógrafo"
+
+#: UltraSound.py:51
+msgid "Start Recording"
+msgstr "Empezar grabación"
+
+#: UltraSound.py:31
+msgid "Un-Freeze"
+msgstr "Descongelar"
+
+#: UltraSound.py:56
+msgid "Freeze"
+msgstr "Congelar"
+
+#: UltraSound.py:77
+msgid "Normal"
+msgstr "Normal"
+
+#: UltraSound.py:81
+msgid "Bright"
+msgstr "Brillo"
+
+#: UltraSound.py:85
+msgid "Brighter"
+msgstr "Más brillante"

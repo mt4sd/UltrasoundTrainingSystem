@@ -137,9 +137,8 @@ class SimulatorGuideletWidget(ScriptedLoadableModuleWidget):
     self.plusServerHostNamePortLineEdit.setText(plusServerHostNamePort)
 
   def onLanguagesComboBoxChanged(self, SelectedLanguage):
-    logging.info("onLanguagesComboBoxChanged")
+    logging.info("onLanguagesComboBoxChanged: " + SelectedLanguage )
     self.selectedLanguage = SelectedLanguage
-    print self.selectedLanguage
     
   def cleanup(self):
     self.launchGuideletButton.disconnect('clicked()', self.onLaunchGuideletButtonClicked)

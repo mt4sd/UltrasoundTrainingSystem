@@ -5,7 +5,7 @@ import unittest
 import vtk, qt, ctk, slicer
 import logging
 from SimulatorGuideletLoadable import SimulatorGuideletLoadable, SimulatorGuideletLogic, SimulatorGuideletTest, SimulatorGuideletWidget
-from SimulatorGuidelet import SimulatorGuidelet
+from I18nGuideletLib import SimulatorGuidelet
 
 
 class UsSimulatorTraining(SimulatorGuideletLoadable):
