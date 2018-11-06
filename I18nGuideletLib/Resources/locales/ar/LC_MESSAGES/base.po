@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-30 20:10-0000\n"
-"PO-Revision-Date: 2018-11-02 13:52+0000\n"
+"PO-Revision-Date: 2018-11-06 12:26+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: UsSimulatorTraining.py:113
 msgid "Scene"
-msgstr "مشهدمشهد"
+msgstr "مشهد"
 
 #: UsSimulatorTraining.py:120
 msgid "Load Scene"
@@ -27,56 +27,60 @@ msgstr "تحميل المشهد"
 
 #: I18nGuidelet.py:163
 msgid "Settings"
-msgstr ""
+msgstr "إعدادات "
 
 #: I18nGuidelet.py:173
 msgid "Layout: "
-msgstr ""
+msgstr "نسق/تصميم "
 
 #: I18nGuidelet.py:190
 msgid "OpenIGTLink connector: "
-msgstr ""
+msgstr "IGT LINK فتح وصلة"
 
 #: I18nGuidelet.py:193
 msgid "Show 3D Slicer user interface"
-msgstr ""
+msgstr "3D SLICER عرض واجهة المستخدم ل"
 
 #: I18nGuidelet.py:197
 msgid "Show Guidelet in full screen"
-msgstr ""
+msgstr "في شاشة كاملة Guidelet عرض"
 
 #: I18nGuidelet.py:201
 msgid "Save Guidelet scene"
-msgstr ""
+msgstr "GUIDELET حفظ مشهد"
 
 #: I18nGuidelet.py:216
 msgid "Save scene directory:"
-msgstr ""
+msgstr "حفظ مجلد المشهد"
 
 #: I18nGuidelet.py:223
 msgid "Exit"
-msgstr ""
+msgstr "خروج"
 
 #: UltraSound.py:40
 msgid "Ultrasound"
-msgstr ""
+msgstr "الموجات فوق الصوتية"
 
 #: UltraSound.py:51
 msgid "Start Recording"
-msgstr ""
+msgstr "بدأ التسجيل"
+
+#: UltraSound.py:31
+msgid "Un-freeze"
+msgstr "تفعيل"
 
 #: UltraSound.py:56
 msgid "Freeze"
-msgstr ""
+msgstr "تجميد/ تعليق"
 
 #: UltraSound.py:77
 msgid "Normal"
-msgstr ""
+msgstr "طبيعي"
 
 #: UltraSound.py:81
 msgid "Bright"
-msgstr ""
+msgstr "الاضاءة"
 
 #: UltraSound.py:85
 msgid "Brighter"
-msgstr ""
+msgstr "أكثر إضاءة"

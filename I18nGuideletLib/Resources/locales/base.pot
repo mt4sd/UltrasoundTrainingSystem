@@ -64,7 +64,7 @@ msgid "Start Recording"
 msgstr ""
 
 #: UltraSound.py:31
-msgid "Un-Freeze"
+msgid "Un-freeze"
 msgstr ""
 
 #: UltraSound.py:56
