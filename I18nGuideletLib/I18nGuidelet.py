@@ -93,8 +93,8 @@ class I18nGuidelet(object):
 
     self.sliceletDockWidget.setStyleSheet(self.loadStyleSheet())
 
-  def tr(self, data):
-    return self.Translator.Translate(data)
+  def tr(self, text):
+    return self.Translator.Translate(text)
 
   def showModulePanel(self, show):
     modulePanelDockWidget = slicer.util.mainWindow().findChildren('QDockWidget','PanelDockWidget')[0]
