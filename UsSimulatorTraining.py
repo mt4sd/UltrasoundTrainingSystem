@@ -2,20 +2,21 @@ import os
 import unittest
 import vtk, qt, ctk, slicer
 import logging
-from SimulatorGuideletLoadable import SimulatorGuideletLoadable, SimulatorGuideletLogic, SimulatorGuideletTest, SimulatorGuideletWidget
-from SimulatorGuidelet import SimulatorGuidelet
-
-
-class UsSimulatorTraining(SimulatorGuideletLoadable):
+from Guidelet import GuideletLoadable, GuideletLogic, GuideletTest, GuideletWidget
+from Guidelet import Guidelet
+#
+# UsSimulatorTraining
+#
+class UsSimulatorTraining(GuideletLoadable):
   """Uses GuideletLoadable class, available at:
   """
 
   def __init__(self, parent):
-    SimulatorGuideletLoadable.__init__(self, parent)
-    self.parent.title = "Us Simulation Navigation"
-    self.parent.categories = ["USSimulator"]
+    GuideletLoadable.__init__(self, parent)
+    self.parent.title = "US Simulation Navigation"
+    self.parent.categories = ["IGT"]
     self.parent.dependencies = []
-    self.parent.contributors = ["Carlos Luque (ULPGC)"]
+    self.parent.contributors = ["Carlos Luque (ULPGC), Csaba Pinter (Queen's)"]
     self.parent.helpText = """
     US simulations
     """
@@ -23,15 +24,18 @@ class UsSimulatorTraining(SimulatorGuideletLoadable):
     NAMIC
     """ # replace with organization, grant and thanks.
 
-class UsSimulatorTrainingWidget(SimulatorGuideletWidget):
+#
+# UsSimulatorTrainingWidget
+#
+class UsSimulatorTrainingWidget(GuideletWidget):
   def __init__(self, parent = None):
-    SimulatorGuideletWidget.__init__(self, parent)
+    GuideletWidget.__init__(self, parent)
 
   def setup(self):
-    SimulatorGuideletWidget.setup(self)
+    GuideletWidget.setup(self)
 
   def addLauncherWidgets(self):
-    SimulatorGuideletWidget.addLauncherWidgets(self)
+    GuideletWidget.addLauncherWidgets(self)
 
   def createGuideletInstance(self):
     return UsSimulatorTrainingGuidelet(None, self.guideletLogic, self.selectedConfigurationName)
@@ -39,44 +43,91 @@ class UsSimulatorTrainingWidget(SimulatorGuideletWidget):
   def createGuideletLogic(self):
     return UsSimulatorTrainingLogic()
 
-class UsSimulatorTrainingLogic(SimulatorGuideletLogic):
+#
+# UsSimulatorTrainingLogic
+#
+class UsSimulatorTrainingLogic(GuideletLogic):
   """Uses GuideletLogic base class, available at:
   """ #TODO add path
 
   def __init__(self, parent = None):
-    SimulatorGuideletLogic.__init__(self, parent)
+    GuideletLogic.__init__(self, parent)
 
-class UsSimulatorTrainingTest(SimulatorGuideletTest):
+#
+# UsSimulatorTrainingTest
+#
+class UsSimulatorTrainingTest(GuideletTest):
   """This is the test case for your scripted module.
   """
 
   def runTest(self):
     """Run as few or as many tests as needed here.
     """
-    SimulatorGuideletTest.runTest(self)
-    
+    GuideletTest.runTest(self)
 
-class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
+#
+# UsSimulatorTrainingGuidelet
+#
+class UsSimulatorTrainingGuidelet(Guidelet):
+
+  VIEW_US_SIMULATOR_TRAINING = unicode("Ultrasound Simulator Training")
 
   def __init__(self, parent, logic, configurationName='Default'):
-    SimulatorGuidelet.__init__(self, parent, logic, configurationName)
+    Guidelet.__init__(self, parent, logic, configurationName)
 
     logging.debug('UsSimulatorTrainingGuidelet.__init__')
     self.logic.addValuesToDefaultConfiguration()
 
-     # Set up main frame.
+    # Set default layout name to the simulator training layout
+    self.defaultLayoutName = self.VIEW_US_SIMULATOR_TRAINING
 
+    # Set up main frame
     self.sliceletDockWidget.setObjectName('UsSimulatorTrainingPanel')
     self.sliceletDockWidget.setWindowTitle('UsSimulatorTraining')
     self.mainWindow.setWindowTitle('UsSimulatorTraining')
 
-  def __del__(self):#common
+    self.selectView(self.VIEW_US_SIMULATOR_TRAINING)
+
+  def __del__(self):
     self.cleanup()
 
   # Clean up when slicelet is closed
-  def cleanup(self):#common
-    SimulatorGuidelet.cleanup(self)
+  def cleanup(self):
+    Guidelet.cleanup(self)
     logging.debug('cleanup')
+
+  def setupAdvancedPanel(self):
+    Guidelet.setupAdvancedPanel(self)
+
+    self.registerCustomLayouts()
+
+  def registerCustomLayouts(self):
+    customLayout = (
+      "<layout type=\"horizontal\">"
+        "<item>"
+            "<view class=\"vtkMRMLSliceNode\" singletontag=\"Red\">"
+            "  <property name=\"orientation\" action=\"default\">Axial</property>"
+            "  <property name=\"viewlabel\" action=\"default\">R</property>"
+            "  <property name=\"viewcolor\" action=\"default\">#F34A33</property>"
+            "</view>"
+        "</item>"
+        "<item>"
+            "<layout type=\"vertical\">"
+              "<item>"
+                "<view class=\"vtkMRMLViewNode\" singletontag=\"1\">"
+                "<property name=\"viewlabel\" action=\"default\">1</property>"
+                "</view>"
+              "</item>"
+              "<item>"
+                "<view class=\"vtkMRMLViewNode\" singletontag=\"2\">"
+                "<property name=\"viewlabel\" action=\"default\">2</property>"
+                "</view>"
+              "</item>"
+            "</layout>"
+        "</item>"
+       "</layout>")
+
+    self.registerLayout(self.VIEW_US_SIMULATOR_TRAINING, 525, customLayout, self.delayedFitAndHideUltrasoundSliceIn3dView)
 
   def createFeaturePanels(self):
     # Create GUI panels.
@@ -85,24 +136,22 @@ class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
     self.LoadSceneCollapsibleButton = ctk.ctkCollapsibleButton()
     self.SetupLoadSceneCollapsibleButton()
 
-    featurePanelList = SimulatorGuidelet.createFeaturePanels(self)
-
+    featurePanelList = Guidelet.createFeaturePanels(self)
 
     featurePanelList[len(featurePanelList):] = [self.LoadSceneCollapsibleButton]
-
 
     return featurePanelList
 
   def setupConnections(self):
     logging.debug('UsSimulatorTraining.setupConnections()')
-    SimulatorGuidelet.setupConnections(self)
+    Guidelet.setupConnections(self)
 
     self.LoadSceneButton.connect('clicked()', self.openLoadSceneDialog)
 
-  def disconnect(self):#TODO see connect
+  def disconnect(self): #TODO: see connect
     logging.debug('UsSimulatorTraining.disconnect()')
-    SimulatorGuidelet.disconnect(self)
-  
+    Guidelet.disconnect(self)
+
   def SetupLoadSceneCollapsibleButton(self):
     logging.debug('SetupLoadSceneCollapsibleButton')
 
@@ -121,4 +170,3 @@ class UsSimulatorTrainingGuidelet(SimulatorGuidelet):
     slicer.app.ioManager().openLoadSceneDialog()
     self.layoutManager.setLayout(self.one2Ddual3dCustomLayoutId)
     self.setupConnectorNode()  # checking
-    
