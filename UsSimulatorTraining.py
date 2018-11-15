@@ -93,8 +93,8 @@ class UsSimulatorTrainingGuidelet(Guidelet):
 
   # Clean up when slicelet is closed
   def cleanup(self):
-    Guidelet.cleanup(self)
-    logging.debug('cleanup')
+    Guidelet.preCleanup(self)
+    logging.debug('precleanup')
 
   def setupAdvancedPanel(self):
     Guidelet.setupAdvancedPanel(self)
