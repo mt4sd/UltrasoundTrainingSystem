@@ -89,10 +89,10 @@ class UsSimulatorTrainingGuidelet(Guidelet):
     self.selectView(self.VIEW_US_SIMULATOR_TRAINING)
 
   def __del__(self):
-    self.cleanup()
+    self.preCleanup()
 
   # Clean up when slicelet is closed
-  def cleanup(self):
+  def preCleanup(self):
     Guidelet.preCleanup(self)
     logging.debug('precleanup')
 
