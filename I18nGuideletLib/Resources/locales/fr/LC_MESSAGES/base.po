@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-30 20:10-0000\n"
-"PO-Revision-Date: 2018-11-06 12:47+0000\n"
+"PO-Revision-Date: 2018-12-11 12:04+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +24,10 @@ msgstr "Scène"
 #: UsSimulatorTraining.py:120
 msgid "Load Scene"
 msgstr "Scène de chargement"
+
+#: UsSimulatorTraining.py:74
+msgid "US Simulator Training"
+msgstr "Formation Simulateur Échographe"
 
 #: I18nGuidelet.py:163
 msgid "Settings"

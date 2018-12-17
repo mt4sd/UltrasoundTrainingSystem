@@ -71,8 +71,8 @@ class UsSimulatorTrainingGuidelet(I18nGuidelet):
      # Set up main frame.
      # Dock Widget = tool palettes or utility windows
     self.sliceletDockWidget.setObjectName('UsSimulatorTrainingPanel')
-    self.sliceletDockWidget.setWindowTitle('UsSimulatorTraining')
-    self.mainWindow.setWindowTitle('UsSimulatorTraining')
+    self.sliceletDockWidget.setWindowTitle(self.tr('US Simulator Training'))
+    self.mainWindow.setWindowTitle(self.tr('US Simulator Training'))
 
  
   def __del__(self):#common
