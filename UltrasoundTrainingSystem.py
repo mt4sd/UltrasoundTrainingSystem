@@ -5,9 +5,9 @@ import logging
 from Guidelet import GuideletLoadable, GuideletLogic, GuideletTest, GuideletWidget
 from Guidelet import Guidelet
 #
-# UsSimulatorTraining
+# UltrasoundTrainingSystem
 #
-class UsSimulatorTraining(GuideletLoadable):
+class UltrasoundTrainingSystem(GuideletLoadable):
   """Uses GuideletLoadable class, available at:
   """
 
@@ -25,9 +25,9 @@ class UsSimulatorTraining(GuideletLoadable):
     """ # replace with organization, grant and thanks.
 
 #
-# UsSimulatorTrainingWidget
+# UltrasoundTrainingSystemWidget
 #
-class UsSimulatorTrainingWidget(GuideletWidget):
+class UltrasoundTrainingSystemWidget(GuideletWidget):
   def __init__(self, parent = None):
     GuideletWidget.__init__(self, parent)
 
@@ -38,15 +38,15 @@ class UsSimulatorTrainingWidget(GuideletWidget):
     GuideletWidget.addLauncherWidgets(self)
 
   def createGuideletInstance(self):
-    return UsSimulatorTrainingGuidelet(None, self.guideletLogic, self.selectedConfigurationName)
+    return UltrasoundTrainingSystemGuidelet(None, self.guideletLogic, self.selectedConfigurationName)
 
   def createGuideletLogic(self):
-    return UsSimulatorTrainingLogic()
+    return UltrasoundTrainingSystemLogic()
 
 #
-# UsSimulatorTrainingLogic
+# UltrasoundTrainingSystemLogic
 #
-class UsSimulatorTrainingLogic(GuideletLogic):
+class UltrasoundTrainingSystemLogic(GuideletLogic):
   """Uses GuideletLogic base class, available at:
   """ #TODO add path
 
@@ -54,9 +54,9 @@ class UsSimulatorTrainingLogic(GuideletLogic):
     GuideletLogic.__init__(self, parent)
 
 #
-# UsSimulatorTrainingTest
+# UltrasoundTrainingSystemTest
 #
-class UsSimulatorTrainingTest(GuideletTest):
+class UltrasoundTrainingSystemTest(GuideletTest):
   """This is the test case for your scripted module.
   """
 
@@ -66,25 +66,25 @@ class UsSimulatorTrainingTest(GuideletTest):
     GuideletTest.runTest(self)
 
 #
-# UsSimulatorTrainingGuidelet
+# UltrasoundTrainingSystemGuidelet
 #
-class UsSimulatorTrainingGuidelet(Guidelet):
+class UltrasoundTrainingSystemGuidelet(Guidelet):
 
   VIEW_US_SIMULATOR_TRAINING = unicode("Ultrasound Simulator Training")
 
   def __init__(self, parent, logic, configurationName='Default'):
     Guidelet.__init__(self, parent, logic, configurationName)
 
-    logging.debug('UsSimulatorTrainingGuidelet.__init__')
+    logging.debug('UltrasoundTrainingSystemGuidelet.__init__')
     self.logic.addValuesToDefaultConfiguration()
 
     # Set default layout name to the simulator training layout
     self.defaultLayoutName = self.VIEW_US_SIMULATOR_TRAINING
 
     # Set up main frame
-    self.sliceletDockWidget.setObjectName('UsSimulatorTrainingPanel')
-    self.sliceletDockWidget.setWindowTitle('UsSimulatorTraining')
-    self.mainWindow.setWindowTitle('UsSimulatorTraining')
+    self.sliceletDockWidget.setObjectName('UltrasoundTrainingSystemPanel')
+    self.sliceletDockWidget.setWindowTitle('UltrasoundTrainingSystem')
+    self.mainWindow.setWindowTitle('UltrasoundTrainingSystem')
 
     self.selectView(self.VIEW_US_SIMULATOR_TRAINING)
 
@@ -131,7 +131,7 @@ class UsSimulatorTrainingGuidelet(Guidelet):
 
   def createFeaturePanels(self):
     # Create GUI panels.
-    logging.debug('UsSimulatorTraining.createFeaturePanels()')
+    logging.debug('UltrasoundTrainingSystem.createFeaturePanels()')
 
     self.LoadSceneCollapsibleButton = ctk.ctkCollapsibleButton()
     self.SetupLoadSceneCollapsibleButton()
@@ -143,13 +143,13 @@ class UsSimulatorTrainingGuidelet(Guidelet):
     return featurePanelList
 
   def setupConnections(self):
-    logging.debug('UsSimulatorTraining.setupConnections()')
+    logging.debug('UltrasoundTrainingSystem.setupConnections()')
     Guidelet.setupConnections(self)
 
     self.LoadSceneButton.connect('clicked()', self.openLoadSceneDialog)
 
   def disconnect(self): #TODO: see connect
-    logging.debug('UsSimulatorTraining.disconnect()')
+    logging.debug('UltrasoundTrainingSystem.disconnect()')
     Guidelet.disconnect(self)
 
   def SetupLoadSceneCollapsibleButton(self):
